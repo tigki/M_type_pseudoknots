@@ -120,7 +120,7 @@ void pairalign(char *sequence, int i, int j, int left_left_loop_size, int left_m
 
   // right loop stems
   right_loop_stems = 0;
-  for (int a = R - 1, b = r + 1; a >= M1 + 1 && b <= len - 1; a--, b++) { //alan changed M to M1? or M2?
+  for (int a = R - 1, b = r + 1; a >= M2 + 1 && b <= len - 1; a--, b++) { //alan changed M to M1? or M2?
     if (!IS_PAIR(sequence[a], sequence[b])) {
       break;
     }
