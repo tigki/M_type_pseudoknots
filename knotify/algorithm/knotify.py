@@ -131,7 +131,7 @@ class Knotify(BaseAlgorithm):
                     "dot_bracket": "." * len(sequence),
                     "left_loop_stems": 0,
                     "middle_1_loop_stems": 0,
-                    "middle_2_loop_stems":0
+                    "middle_2_loop_stems":0,
                     "right_loop_stems": 0,
                     "dd": 0,
                 }
