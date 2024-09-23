@@ -32,9 +32,9 @@ class CTypesPairAlign(BasePairAlign):
     Implementations should be done in C code, exporting the following symbol:
 
     ```c
-    void pairalign(char *sequence, int i, int j, int left_left_loop_size,
-                   int left_right_loop_size, int right_left_loop_size, int dd_size,
-                   void (*cb)(char *, int, int, int)) {
+    void pairalign(char *sequence, int i, int j, int left_left_loop_size, int left_mid_loop_size,
+                   int left_right_loop_size, int right_left_loop_size, int right_mid_loop_size, int dd_size,
+                   void (*cb)(char *, int, int, int, int)) {
     ```
 
     The implementation is done in C code in pairalign/cpairalign_ltype.c
@@ -53,20 +53,23 @@ class CTypesPairAlign(BasePairAlign):
         i: int,
         j: int,
         left_left_loop_size: int,
+        left_mid_loop_size: int,
         left_right_loop_size: int,
         right_left_loop_size: int,
+        right_mid_loop_size: int,
         dd_size: int,
     ) -> str:
         results = []
 
         def add_result(
-            dot_bracket, left_loop_stems, middle_loop_stems, right_loop_stems
+            dot_bracket, left_loop_stems, middle_1_loop_stems, middle_2_loop_stems, right_loop_stems
         ):
             results.append(
                 (
                     dot_bracket.decode(),
                     left_loop_stems,
-                    middle_loop_stems,
+                    middle_1_loop_stems,
+                    middle_2_loop_stems,
                     right_loop_stems,
                 )
             )
@@ -80,8 +83,10 @@ class CTypesPairAlign(BasePairAlign):
             ctypes.c_int(i),
             ctypes.c_int(j),
             ctypes.c_int(left_left_loop_size),
+            ctypes.c_int(left_mid_loop_size),
             ctypes.c_int(left_right_loop_size),
             ctypes.c_int(right_left_loop_size),
+            ctypes.c_int(right_mid_loop_size),
             ctypes.c_int(dd_size),
             FUNCTYPE(add_result),
         )

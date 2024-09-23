@@ -35,6 +35,6 @@ class BasePairAlign:
         self, sequence: str, i: int, j: int, left_loop_size: int, dd_size: int
     ) -> list:
         """
-        :return: [(dot_bracket, left_loop_stems, right_loop_stems)]
+        :return: [(dot_bracket, left_loop_stems, middle_1_loop_stems, middle_2_loop_stems right_loop_stems)]
         """
         raise NotImplementedError

@@ -70,8 +70,8 @@ class CTypesParser(BaseParser):
     def detect_pseudoknots(self, sequence: str) -> list:
         results = []
 
-        def add_result(i, j, left_left_loop_size, left_right_loop_size, right_left_loop_size,dd_size):
-            results.append((i, j, left_left_loop_size, left_right_loop_size, right_left_loop_size,dd_size))
+        def add_result(i, j, left_left_loop_size, left_mid_loop_size, left_right_loop_size, right_left_loop_size, right_mid_loop_size, dd_size):
+            results.append((i, j, left_left_loop_size, left_mid_loop_size, left_right_loop_size, right_left_loop_size, right_mid_loop_size, dd_size))
 
         FUNCTYPE = ctypes.CFUNCTYPE(
             None, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,ctypes.c_int,ctypes.c_int

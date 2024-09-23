@@ -66,8 +66,10 @@ class Knotify(BaseAlgorithm):
             i,
             j,
             left_left_loop_size,
+            left_mid_loop_size,
             left_right_loop_size,
             right_left_loop_size,
+            right_mid_loop_size,
             dd_size,
         ) in parser(sequence):
             for p in pairalign:
@@ -76,17 +78,20 @@ class Knotify(BaseAlgorithm):
                     i,
                     j,
                     left_left_loop_size,
+                    left_mid_loop_size,
                     left_right_loop_size,
                     right_left_loop_size,
+                    right_mid_loop_size,
                     dd_size,
                 )
                 for (
                     dot_bracket,
                     left_loop_stems,
-                    middle_loop_stems,
+                    middle_1_loop_stems,
+                    middle_2_loop_stems,
                     right_loop_stems,
                 ) in knots:
-                    size = left_loop_stems + right_loop_stems + middle_loop_stems
+                    size = left_loop_stems + right_loop_stems + middle_1_loop_stems + middle_2_loop_stems
 
                     if not prune_early or size >= max_size[p] - max_stem_allow_smaller:
                         max_size[p] = max(max_size[p], size)
@@ -94,7 +99,8 @@ class Knotify(BaseAlgorithm):
                             {
                                 "dot_bracket": dot_bracket,
                                 "left_loop_stems": left_loop_stems,
-                                "middle_loop_stems": middle_loop_stems,
+                                "middle_1_loop_stems": middle_1_loop_stems,
+                                "middle_2_loop_stems": middle_2_loop_stems,
                                 "right_loop_stems": right_loop_stems,
                                 "dd": dd_size,
                             }
@@ -111,7 +117,8 @@ class Knotify(BaseAlgorithm):
                             {
                                 "dot_bracket": d,
                                 "left_loop_stems": l,
-                                "middle_loop_stems": middle_loop_stems,
+                                "middle_1_loop_stems": middle_1_loop_stems,
+                                "middle_2_loop_stems": middle_2_loop_stems,
                                 "right_loop_stems": r,
                                 "dd": dd_size,
                             }
@@ -123,7 +130,8 @@ class Knotify(BaseAlgorithm):
                 {
                     "dot_bracket": "." * len(sequence),
                     "left_loop_stems": 0,
-                    "middle_loop_stems": 0,
+                    "middle_1_loop_stems": 0,
+                    "middle_2_loop_stems":0
                     "right_loop_stems": 0,
                     "dd": 0,
                 }
