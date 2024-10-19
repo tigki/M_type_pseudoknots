@@ -74,7 +74,7 @@ class CTypesParser(BaseParser):
             results.append((i, j, left_left_loop_size, left_mid_loop_size, left_right_loop_size, right_left_loop_size, right_mid_loop_size, dd_size))
 
         FUNCTYPE = ctypes.CFUNCTYPE(
-            None, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,ctypes.c_int,ctypes.c_int, ctypes.c_int, ctypes.c_int
+            None, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int,ctypes.c_int, ctypes.c_int, ctypes.c_int
         )
 
         self.lib.detect_pseudoknots(
