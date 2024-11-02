@@ -22,13 +22,13 @@
 # SOFTWARE.
 #
 
-"""
-Script:         00-example.py
-Author:         Angelos Kolaitis <neoaggelos@gmail.com>
-Usage:          ./00-example.py
-Description:
-    This script gives an example of using Knotify directly from Python code.
-"""
+#"""
+#Script:         00-example.py
+#Author:         Angelos Kolaitis <neoaggelos@gmail.com>
+#Usage:          ./00-example.py
+#Description:
+#    This script gives an example of using Knotify directly from Python code.
+#"""
 
 from datetime import datetime
 
