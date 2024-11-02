@@ -154,9 +154,9 @@ void detect_pseudoknots(char *sequence, void (*cb)(int, int, int, int, int, int,
 			
 					if ((cs_position->left < cs_position2->left) &&
 						(cs_position2->left < cs_position3->left) &&
-						(cs_position3->left < cs_position4->left) &&
-						(cs_position4->left < cs_position->right) &&
-						(cs_position->right < cs_position2->right) &&
+						(cs_position3->left < cs_position->right) &&
+						(cs_position->right < cs_position4->left) &&
+						(cs_position4->left < cs_position2->right) &&
 						(cs_position2->right < cs_position3->right) &&
 						(cs_position3->right < cs_position4->right)) 
 					{
@@ -183,10 +183,10 @@ void detect_pseudoknots(char *sequence, void (*cb)(int, int, int, int, int, int,
 		int size = (ccs_position->cstem[3]).right - ccs_position->cstem[0].left + 1;
 		int left_left_loop_size = ccs_position->cstem[1].left - ccs_position->cstem[0].left - 1;
 		int left_mid_loop_size = ccs_position->cstem[2].left - ccs_position->cstem[1].left - 1;
-		int left_right_loop_size = ccs_position->cstem[3].left - ccs_position->cstem[2].left - 1;
-		int right_left_loop_size = ccs_position->cstem[1].right - ccs_position->cstem[0].right - 1;
+		int left_right_loop_size = ccs_position->cstem[0].right - ccs_position->cstem[2].left - 1;
+		int right_left_loop_size = ccs_position->cstem[1].right - ccs_position->cstem[3].left - 1;
 		int right_mid_loop_size = ccs_position->cstem[2].right - ccs_position->cstem[1].right - 1;
-		int dd_size = ccs_position->cstem[0].right - ccs_position->cstem[3].left - 1;
+		int dd_size = ccs_position->cstem[4].left - ccs_position->cstem[0].right - 1;
 
 		if (size < min_window_size || size > max_window_size ||
 			dd_size < s_min_dd_size || dd_size > s_max_dd_size ||

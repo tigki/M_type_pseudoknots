@@ -80,11 +80,12 @@ void pairalign(char *sequence, int i, int j, int left_left_loop_size, int left_m
   int L = i;
   int M1 = i + left_left_loop_size + 1;
   int M2 = i + left_left_loop_size + left_mid_loop_size + 2;
-  int R = i + left_left_loop_size + left_mid_loop_size + left_right_loop_size + 2;
-  int l = i + left_left_loop_size + left_right_loop_size + dd_size + 3;
-  int m1 = l + right_left_loop_size + 1;
-  int m2 = l + right_left_loop_size + right_mid_loop_size + 2;
+  int l = i + left_left_loop_size + left_mid_loop_size + left_right_loop_size + 3;
+  int R = l + dd_size + 1;
+  int m1 = R + right_left_loop_size + 1;
+  int m2 = R + right_left_loop_size + right_mid_loop_size + 2;
   int r = i + j - 1;
+  
 
   char *dot_bracket = strdup(sequence);
   int left_loop_stems = 0, middle_1_loop_stems = 0, middle_2_loop_stems = 0, right_loop_stems = 0;
@@ -102,7 +103,7 @@ void pairalign(char *sequence, int i, int j, int left_left_loop_size, int left_m
   dot_bracket[r] = '}';
 
   left_loop_stems = 0;
-  for (int a = L - 1, b = l + 1; a >= 0 && b <= m1 - 1; a--, b++) {// alan changed m to m1
+  for (int a = L - 1, b = l + 1; a >= 0 && b <= R - 1; a--, b++) {// alan changed m to m1
     if (!IS_PAIR(sequence[a], sequence[b])) {
       break;
     }
@@ -132,7 +133,7 @@ void pairalign(char *sequence, int i, int j, int left_left_loop_size, int left_m
   }
 
   right_loop_stems = 0;
-  for (int a = R - 1, b = r + 1; a >= M2 + 1 && b <= len - 1; a--, b++) {
+  for (int a = R - 1, b = r + 1; a >= l + 1 && b <= len - 1; a--, b++) {
     if (!IS_PAIR(sequence[a], sequence[b])) {
       break;
     }
@@ -150,17 +151,17 @@ void pairalign(char *sequence, int i, int j, int left_left_loop_size, int left_m
   int lBulgeSizeRight, lBulgeSizeLeft, lStems;
 
   find_bulge(sequence, 0, L - left_loop_stems - 1, l + left_loop_stems + 1,
-             m1 - 1, &lBulge, &lBulgeSizeLeft, &lBulgeSizeRight, &lStems);
+             R - 1, &lBulge, &lBulgeSizeLeft, &lBulgeSizeRight, &lStems);
 
   find_bulge(sequence, L + 1, M1 - middle_1_loop_stems - 1,
              m1 + middle_1_loop_stems + 1, m2 - 1, &m1Bulge, &m1BulgeSizeLeft,
              &m1BulgeSizeRight, &m1Stems);
 
-find_bulge(sequence, M1 + 1, M2 - middle_2_loop_stems - 1,
+  find_bulge(sequence, M1 + 1, M2 - middle_2_loop_stems - 1,
              m2 + middle_2_loop_stems + 1, r - 1, &m2Bulge, &m2BulgeSizeLeft,
              &m2BulgeSizeRight, &m2Stems);
 
-  find_bulge(sequence, M2 + 1 , R - right_loop_stems - 1,
+  find_bulge(sequence, l + 1 , R - right_loop_stems - 1,
              r + right_loop_stems + 1, len - 1, &rBulge, &rBulgeSizeLeft,
             &rBulgeSizeRight,&rStems);
 
