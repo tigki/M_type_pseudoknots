@@ -75,7 +75,7 @@ class CTypesPairAlign(BasePairAlign):
             )
 
         FUNCTYPE = ctypes.CFUNCTYPE(
-            None, ctypes.c_char_p, ctypes.c_int, ctypes.c_int, ctypes.c_int
+            None, ctypes.c_char_p, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int
         )
 
         self.lib.pairalign(
