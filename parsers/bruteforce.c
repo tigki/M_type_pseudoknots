@@ -33,7 +33,7 @@ typedef struct stem {
 } stem;
 
 typedef struct core_stem {
-  stem cstem[3]; // [THIM] do i need the change this from 3 to 4? 
+  stem cstem[4]; // [THIM] do i need the change this from 3 to 4? 
 } core_stem;
 
 static int s_allow_ug;
