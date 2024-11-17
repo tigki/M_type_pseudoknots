@@ -186,7 +186,7 @@ void detect_pseudoknots(char *sequence, void (*cb)(int, int, int, int, int, int,
 		int left_right_loop_size = ccs_position->cstem[0].right - ccs_position->cstem[2].left - 1;
 		int right_left_loop_size = ccs_position->cstem[1].right - ccs_position->cstem[3].left - 1;
 		int right_mid_loop_size = ccs_position->cstem[2].right - ccs_position->cstem[1].right - 1;
-		int dd_size = ccs_position->cstem[4].left - ccs_position->cstem[0].right - 1;
+		int dd_size = ccs_position->cstem[3].left - ccs_position->cstem[0].right - 1;
 
 		if (size < min_window_size || size > max_window_size ||
 			dd_size < s_min_dd_size || dd_size > s_max_dd_size ||
