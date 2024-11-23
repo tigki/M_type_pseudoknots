@@ -1311,7 +1311,7 @@ L : 'a' L # L1 (1)
   | 'g'   # 0
   ;
 
- D:{% for x in range(max_dd_size) %}D{{ x }} {% endfor %} # M1 ({% for x in range(max_dd_size) %}{{ x }} {% endfor %})
+D:{% for x in range(max_dd_size) %}D{{ x }} {% endfor %} # M1 ({% for x in range(max_dd_size) %}{{ x }} {% endfor %})
 
 E : 'a' # 0
   | 'u' # 0
