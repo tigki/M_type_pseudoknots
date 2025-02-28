@@ -428,10 +428,10 @@ struct pseudoknot *traverse_parse_tree (struct yaep_tree_node *node)
 			// right_mid_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[4]);
 			// dd_sizes = traverse_parse_tree_for_dd(node->val.anode.children[5]); //added alan
 
-      left_left_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[0]);
+      			left_left_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[0]);
 			left_mid_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[1]);
 			left_right_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[2]);
-      dd_sizes = traverse_parse_tree_for_dd(node->val.anode.children[3]); //added alan
+      			dd_sizes = traverse_parse_tree_for_dd(node->val.anode.children[3]); //added alan
 			right_left_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[4]);
 			right_mid_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[5]);
       
