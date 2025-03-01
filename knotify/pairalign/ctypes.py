@@ -60,7 +60,7 @@ class CTypesPairAlign(BasePairAlign):
         dd_size: int,
     ) -> str:
         results = []
-
+#note to change this
         def add_result(
             dot_bracket, left_loop_stems, middle_1_loop_stems, middle_2_loop_stems, right_loop_stems
         ):
