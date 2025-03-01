@@ -23,7 +23,7 @@
 from typing import Tuple, Dict
 from enum import Enum
 
-
+#note to also change this
 class State(Enum):
     NONE = 0
     FIRST_LEFT_CORE = 1
