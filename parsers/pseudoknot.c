@@ -393,7 +393,7 @@ struct size *traverse_parse_tree_for_dd(struct yaep_tree_node *node) {
 
 /**
  * Traverses the high level graph in the means of alternative R rules and only.
- * Returns a list of all identified pesudoknots.
+ * Returns a list of all identified pseudoknots.
  **/
 struct pseudoknot *traverse_parse_tree (struct yaep_tree_node *node)
 {
@@ -428,13 +428,13 @@ struct pseudoknot *traverse_parse_tree (struct yaep_tree_node *node)
 			// right_mid_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[4]);
 			// dd_sizes = traverse_parse_tree_for_dd(node->val.anode.children[5]); //added alan
 
-      			left_left_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[0]);
+      left_left_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[0]);
 			left_mid_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[1]);
 			left_right_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[2]);
-      			dd_sizes = traverse_parse_tree_for_dd(node->val.anode.children[3]); //added alan
+      dd_sizes = traverse_parse_tree_for_dd(node->val.anode.children[3]); //added alan
 			right_left_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[4]);
 			right_mid_loop_size = traverse_parse_tree_for_loop(node->val.anode.children[5]);
-      
+
 			while (dd_sizes != NULL)
 			{
 				pseudoknots = append_pseudoknot_if_not_exists(pseudoknots, create_pseudoknot(left_left_loop_size, left_mid_loop_size, left_right_loop_size,
@@ -474,15 +474,15 @@ void detect_pseudoknots(char *sequence, void (*cb)(int, int, int, int, int, int,
   // start,length:leftloopsize,ddsize|leftloopsize2,ddsize2
   for (int right = len - 1; right >= min_window_size - 1; right--) {
     for (int left = right - min_window_size + 1; left > right - max_window_size && left >= 0; left--) 
-	{
+	  {
       s_ntok = left;
       struct yaep_tree_node *root = parse(s_definition);
       struct pseudoknot *ps = traverse_parse_tree(root);
 
       for (struct pseudoknot *i = ps; i != NULL; i = i->next) 
-	  {
+	    {
         if (i->dd_size < s_min_dd_size) 
-		{
+	      {
           continue;
         }
 		// ERROR was HERE -- had 8 arguments but need 9.
