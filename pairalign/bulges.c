@@ -103,7 +103,7 @@ void pairalign(char *sequence, int i, int j, int left_left_loop_size, int left_m
   dot_bracket[r] = '}';
 
   left_loop_stems = 0;
-  for (int a = L - 1, b = l + 1; a >= 0 && b <= R - 1; a--, b++) {// alan changed m to m1
+  for (int a = L - 1, b = l - 1; a >= 0 && b <= M2 - 1; a--, b--) {// alan changed m to m1
     if (!IS_PAIR(sequence[a], sequence[b]) || dot_bracket[b] != '.') {
       break;
     }
@@ -133,7 +133,7 @@ void pairalign(char *sequence, int i, int j, int left_left_loop_size, int left_m
   }
 
   right_loop_stems = 0;
-  for (int a = R - 1, b = r + 1; a >= l + 1 && b <= len - 1; a--, b++) {
+  for (int a = R + 1, b = r + 1; a <= m1 + 1 && b <= len - 1; a++, b++) {
     if (!IS_PAIR(sequence[a], sequence[b]) || dot_bracket[a] != '.') {
       break;
     }
